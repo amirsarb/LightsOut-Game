@@ -1,3 +1,115 @@
+<div>
+  <h1 align="center">A Todo List App with React 🧑‍💻</h1>
+  <p><strong>The lights out game consists of a 5 by 5 grid of lights. 
+      A random number or a stored pattern of these lights is switched on. 
+      Pressing any of the lights will toggle it and the adjacent lights</strong></p>
+<h2 style="">Goal:</h2>
+  <ul>
+  <li>
+  Practicing function / props/ state / array
+  </li>
+    
+   </ul>
+
+  <p>
+    Screenshot:
+  </p>
+
+  <a href="">
+    <img
+      alt="LightsOut Game"
+      src="screenshot.jpg"
+    />
+  </a>
+</div>
+
+<hr />
+
+## Requirements
+- NPM
+- React
+
+## Main Functions
+
+`initialValue`
+
+Before starting game we need some lights be turn On.
+Initiate 5x5 matrix with a random value between 0 or 1
+
+```javascript
+    initialValue = () => {
+        let initCell = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
+        for (let i = 0; i < 5; i++)
+            for (let j = 0; j < 5; j++)
+                initCell[i][j] = Math.floor(Math.random() * 2)
+
+        return initCell
+    }
+```
+`Neighbours(x, y)`
+
+  This function makes current cell to zero and
+  Reverses the status of Neighbours from 0=>1 or 1=>0
+
+  ```javascript
+   Neighbours(x, y) {
+        let tempCell = this.state.cells
+        tempCell[x][y] = 0
+        if (this.checkWin() === 0)
+            this.setState({ isWin: true })
+        else {
+            if (x > 0)
+                tempCell[x - 1][y] = 1 - tempCell[x - 1][y]
+            if (x < 4)
+                tempCell[x + 1][y] = 1 - tempCell[x + 1][y]
+            if (y > 0)
+                tempCell[x][y - 1] = 1 - tempCell[x][y - 1]
+            if (y < 4)
+                tempCell[x][y + 1] = 1 - tempCell[x][y + 1]
+            this.setState({ cells: tempCell })
+        }
+    }
+  ```
+`checkWin()`
+
+  If total of all cells is 0, you win!
+
+```javascript
+ checkWin() {
+        let temp = this.state.cells
+        let total = 0
+        for (let i = 0; i < 5; i++)
+            for (let j = 0; j < 5; j++)
+                total = temp[i][j] + total
+        return total
+
+    }
+ ```
+
+`resetGame()`
+
+  This is a simple function, we just need to initiate again.
+```javascript
+resetGame() {
+        this.setState({ cells: this.initialValue(), isWin: false })
+
+    }
+```
+
+### DISCLAIMER: THIS IS NOT A REACT.JS BEGGINNERS GUIDE/TUTORIAL
+
+
+In the project directory, you can run bellow command to install all dependencies:
+
+### `npm i`
+
+
+To run this app:
+
+### `npm run dev`
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
