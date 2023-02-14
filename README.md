@@ -1,8 +1,8 @@
 <div>
   <h1 align="center">A Todo List App with React 🧑‍💻</h1>
-  <p><strong>The lights out game consists of a 5 by 5 grid of lights. 
-      A random number or a stored pattern of these lights is switched on. 
-      Pressing any of the lights will toggle it and the adjacent lights</strong></p>
+  <p><strong>The lights out game is a 5x5 matrix of lights. 
+A random number of lights are on.
+Pressing any of the lights will toggle it and the toggle neighbors.</strong></p>
 <h2 style="">Goal:</h2>
   <ul>
   <li>
